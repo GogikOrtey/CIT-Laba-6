@@ -1,0 +1,105 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: UserController
+servers:
+  - url: http://localhost:8000
+paths:
+  /user:
+    post:
+      summary: Create a new user
+      operationId: createUser
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ИмяПользователя:
+                  type: string
+                АдресЭлектроннойПочты:
+                  type: string
+                IDpоли:
+                  type: integer
+      responses:
+        '201':
+          description: User created
+    get:
+      summary: Get all users
+      operationId: getUsers
+      responses:
+        '200':
+          description: An array of users
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    ИмяПользователя:
+                      type: string
+                    АдресЭлектроннойПочты:
+                      type: string
+                    IDpоли:
+                      type: integer
+  /user/{id}:
+    get:
+      summary: Get a user by ID
+      operationId: fetchUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A user object
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: object
+                properties:
+                  ИмяПользователя:
+                    type: string
+                  АдресЭлектроннойПочты:
+                    type: string
+                  IDpоли:
+                    type: integer
+    put:
+      summary: Update a user by ID
+      operationId: updateUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ИмяПользователя:
+                  type: string
+                АдресЭлектроннойПочты:
+                  type: string
+                IDpоли:
+                  type: integer
+      responses:
+        '204':
+          description: User updated
+    delete:
+      summary: Delete a user by ID
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: User deleted

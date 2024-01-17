@@ -1,0 +1,88 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Priority API
+paths:
+  /priority:
+    post:
+      summary: Create a new priority
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                НазваниеПриоритета:
+                  type: string
+      responses:
+        '201':
+          description: Created
+    get:
+      summary: Get all priorities
+      responses:
+        '200':
+          description: A list of priorities
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    IDприоритета:
+                      type: integer
+                    НазваниеПриоритета:
+                      type: string
+  /priority/{id}:
+    put:
+      summary: Update a priority
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                НазваниеПриоритета:
+                  type: string
+      responses:
+        '204':
+          description: No Content
+    get:
+      summary: Get a priority
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A priority
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: object
+                properties:
+                  IDприоритета:
+                    type: integer
+                  НазваниеПриоритета:
+                    type: string
+    delete:
+      summary: Delete a priority
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No Content

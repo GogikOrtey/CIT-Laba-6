@@ -1,0 +1,112 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Project API
+paths:
+  /project:
+    post:
+      summary: Create a new project
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                НазваниеПроекта:
+                  type: string
+                ДатаНачала:
+                  type: string
+                ОжидаемаяДатаЗавершения:
+                  type: string
+                IDстатуса:
+                  type: integer
+      responses:
+        '201':
+          description: Created
+    get:
+      summary: Get all projects
+      responses:
+        '200':
+          description: A list of projects
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    IDпроекта:
+                      type: integer
+                    НазваниеПроекта:
+                      type: string
+                    ДатаНачала:
+                      type: string
+                    ОжидаемаяДатаЗавершения:
+                      type: string
+                    IDстатуса:
+                      type: integer
+  /project/{id}:
+    put:
+      summary: Update a project
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                НазваниеПроекта:
+                  type: string
+                ДатаНачала:
+                  type: string
+                ОжидаемаяДатаЗавершения:
+                  type: string
+                IDстатуса:
+                  type: integer
+      responses:
+        '204':
+          description: No Content
+    get:
+      summary: Get a project
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A project
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: object
+                properties:
+                  IDпроекта:
+                    type: integer
+                  НазваниеПроекта:
+                    type: string
+                  ДатаНачала:
+                    type: string
+                  ОжидаемаяДатаЗавершения:
+                    type: string
+                  IDстатуса:
+                    type: integer
+    delete:
+      summary: Delete a project
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No Content

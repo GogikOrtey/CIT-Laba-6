@@ -1,0 +1,136 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Task API
+paths:
+  /task:
+    post:
+      summary: Create a new task
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IDпроекта:
+                  type: integer
+                НазваниеЗадачи:
+                  type: string
+                ОписаниеЗадачи:
+                  type: string
+                ДатаНачала:
+                  type: string
+                ДатаОкончания:
+                  type: string
+                IDстатуса:
+                  type: integer
+                IDприоритета:
+                  type: integer
+      responses:
+        '201':
+          description: Created
+    get:
+      summary: Get all tasks
+      responses:
+        '200':
+          description: A list of tasks
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    IDзадачи:
+                      type: integer
+                    IDпроекта:
+                      type: integer
+                    НазваниеЗадачи:
+                      type: string
+                    ОписаниеЗадачи:
+                      type: string
+                    ДатаНачала:
+                      type: string
+                    ДатаОкончания:
+                      type: string
+                    IDстатуса:
+                      type: integer
+                    IDприоритета:
+                      type: integer
+  /task/{id}:
+    put:
+      summary: Update a task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IDпроекта:
+                  type: integer
+                НазваниеЗадачи:
+                  type: string
+                ОписаниеЗадачи:
+                  type: string
+                ДатаНачала:
+                  type: string
+                ДатаОкончания:
+                  type: string
+                IDстатуса:
+                  type: integer
+                IDприоритета:
+                  type: integer
+      responses:
+        '204':
+          description: No Content
+    get:
+      summary: Get a task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A task
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: object
+                properties:
+                  IDзадачи:
+                    type: integer
+                  IDпроекта:
+                    type: integer
+                  НазваниеЗадачи:
+                    type: string
+                  ОписаниеЗадачи:
+                    type: string
+                  ДатаНачала:
+                    type: string
+                  ДатаОкончания:
+                    type: string
+                  IDстатуса:
+                    type: integer
+                  IDприоритета:
+                    type: integer
+    delete:
+      summary: Delete a task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No Content

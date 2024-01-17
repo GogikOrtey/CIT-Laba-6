@@ -1,0 +1,88 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Status API
+paths:
+  /status:
+    post:
+      summary: Create a new status
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                НазваниеСтатуса:
+                  type: string
+      responses:
+        '201':
+          description: Created
+    get:
+      summary: Get all statuses
+      responses:
+        '200':
+          description: A list of statuses
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    IDстатуса:
+                      type: integer
+                    НазваниеСтатуса:
+                      type: string
+  /status/{id}:
+    put:
+      summary: Update a status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                НазваниеСтатуса:
+                  type: string
+      responses:
+        '204':
+          description: No Content
+    get:
+      summary: Get a status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A status
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: object
+                properties:
+                  IDстатуса:
+                    type: integer
+                  НазваниеСтатуса:
+                    type: string
+    delete:
+      summary: Delete a status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No Content

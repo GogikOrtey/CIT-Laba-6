@@ -1,0 +1,104 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Assignment API
+paths:
+  /assignment:
+    post:
+      summary: Create a new assignment
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IDпользователя:
+                  type: integer
+                IDзадачи:
+                  type: integer
+                ДатаНазначения:
+                  type: string
+      responses:
+        '201':
+          description: Created
+    get:
+      summary: Get all assignments
+      responses:
+        '200':
+          description: A list of assignments
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    IDназначения:
+                      type: integer
+                    IDпользователя:
+                      type: integer
+                    IDзадачи:
+                      type: integer
+                    ДатаНазначения:
+                      type: string
+  /assignment/{id}:
+    put:
+      summary: Update an assignment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IDпользователя:
+                  type: integer
+                IDзадачи:
+                  type: integer
+                ДатаНазначения:
+                  type: string
+      responses:
+        '204':
+          description: No Content
+    get:
+      summary: Get an assignment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: An assignment
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: object
+                properties:
+                  IDназначения:
+                    type: integer
+                  IDпользователя:
+                    type: integer
+                  IDзадачи:
+                    type: integer
+                  ДатаНазначения:
+                    type: string
+    delete:
+      summary: Delete an assignment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No Content
